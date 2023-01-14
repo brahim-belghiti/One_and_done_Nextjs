@@ -2,14 +2,11 @@ import Head from 'next/head'
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link';
-// import { Inter } from '@next/font/google'
-// import styles from '@/styles/Home.module.css'
-// const inter = Inter({ subsets: ['latin'] })
 
-export default function Home(props) {
+
+export default function Home() {
 
   const [inputValue, setInputValue] = useState('');
-  // const [buttonDisabled, setbuttonDisabled] = useState(false);
 
   function handleChangeInput(e) {
       const userInput = e.target.value;
@@ -59,7 +56,7 @@ export default function Home(props) {
                 height={20}                           />
                     <input className="mt-1 block py-2 px-3 border border-orange-400 bg-white rounded-full shadow-sm focus:outline-none focus:ring-orange-600 focus:border-orange-600 w-10/12 font-light text-1xl xl:text-2xl h-16"
                         placeholder="past your Youtube video link here: https://www.youtube.com/watch?v=D55ctBYF3AY" value={inputValue} onChange={handleChangeInput} />
-                    {!inputValue ? "" : <Link href={{ pathname: `/video/${inputValue}`, state: `${inputValue}` }}>  <button className="bg-orange-500 hover:bg-orange-600 text-white font-black text-2xl py-2 px-4 rounded-full h-16 w-10/12 xl:w-4/12">Play video</button>
+                    {!inputValue ? "" : <Link href={{ pathname: `/video`, query: { id: inputValue }}}>  <button className="bg-orange-500 hover:bg-orange-600 text-white font-black text-2xl py-2 px-4 rounded-full h-16 w-10/12 xl:w-4/12">Play video</button>
                     </Link>}
                 </div>
                 <div className="columns-2 w-4/5">
