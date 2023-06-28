@@ -6,9 +6,9 @@ import Link from 'next/link';
 
 export default function Home() {
 
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState<string>('');
 
-  function handleChangeInput(e) {
+  function handleChangeInput(e: React.ChangeEvent<HTMLInputElement>) {
       const userInput = e.target.value;
       let videoLink = "";
       switch (userInput[0]) {
