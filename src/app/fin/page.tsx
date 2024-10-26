@@ -1,18 +1,5 @@
-'use client'
 
-import { useEffect } from "react";
-import { useRouter } from 'next/navigation'
-function fin() {
-
-   
-    const router = useRouter();
-    useEffect(() => {
-
-        window.onpopstate = function () {
-            router.push("/fin")
-        }
-    }, [])
-    
+export default function page() {
     
     return (
         <>
@@ -37,4 +24,3 @@ function fin() {
     );
 }
 
-export default fin;
