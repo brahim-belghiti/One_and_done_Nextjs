@@ -4,12 +4,14 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import YouTube from 'react-youtube';
 import { useRouter } from 'next/navigation'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type Topts = {
   height: string;
   width: string;
   playerVars: {
-    autoplay: number;
+    autoplay: number;w
   };
 };
 const VideoPlayer: React.FC<{ videoId: string }> = ({ videoId }) => {
@@ -26,7 +28,7 @@ const VideoPlayer: React.FC<{ videoId: string }> = ({ videoId }) => {
     };
   
     function onVideoError(e) {
-      alert('make sure to past the correct link');
+      toast.error("make sure to past the correct link");
       sethaveError(true);
     }
     function onVideoOnEnd(e) {
@@ -41,13 +43,10 @@ const VideoPlayer: React.FC<{ videoId: string }> = ({ videoId }) => {
     <section>
             <div>
         {haveError ? (
-          <div className="flex flex-col items-center w-full pt-4 pb-16">
-            <Link href="/">
-              {' '}
-              <button className="z-80 bg-orange-500 hover:bg-orange-600 text-white font-black text-2xl py-2 px-4 rounded-full h-16 w-full">
-                back to home
-              </button>
-            </Link>{' '}
+          <div className="flex flex-col items-center w-full pt-4 pb-8">
+            <Link className='z-80 bg-orange-500 hover:bg-orange-600 text-white font-black text-2xl py-2 px-4 rounded-full h-16 min-w-20' href="/">
+                back to home page
+        </Link>
           </div>
         ) : (
           ''
@@ -63,6 +62,7 @@ const VideoPlayer: React.FC<{ videoId: string }> = ({ videoId }) => {
           />
         </div>
       </div>
+      <ToastContainer />
     </section>
   )
 }
