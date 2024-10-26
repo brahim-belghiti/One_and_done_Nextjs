@@ -1,8 +1,7 @@
 'use client'
 
 import { useEffect } from "react";
-import Head from 'next/head'
-
+import { useRouter } from 'next/navigation'
 function fin() {
 
    
@@ -17,13 +16,7 @@ function fin() {
     
     return (
         <>
-        <Head>
-          <title>One and done</title>
-          <meta name="description" content="Watch youtube without distraction" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" href="/favicon.svg" />
-        </Head>
-        <main>
+         <main>
             <div className="pt-24 flex flex-col items-center gap-24">
                 <h1 className="w-10/12  text-4xl xl:text-8xl font-black">Go and continue doing productive work.</h1>
                 <div className="w-10/12 flex flex-col gap-8">

@@ -1,7 +1,7 @@
 import { VideoInputLink } from '@/components/videoInputLink';
 import Image from 'next/image';
 
-export default function Home() {
+export default function page() {
   return (
     <>
       <main>
@@ -30,7 +30,7 @@ export default function Home() {
           <div className="columns-2 w-4/5">
             <p className="text-1xl xl:text-1xl text-lef font-light">
               Sometimes a friend or a coworker sends you a YouTube video to
-              watch, while working. And you tell yourself, I'm going to watch it
+              watch, while working. And you tell yourself, I&apos;m going to watch it
               and comeback to work. But before you know it, you find yourself
               have spent more than 30 minutes on YouTube (The average mobile
               YouTube session is now 40 minutes).
