@@ -14,19 +14,18 @@ export default function Page() {
   const searchParams = useSearchParams()
    const id = searchParams.get('id')
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      {/* Grid container */}
+    <main className="relative w-full h-screen overflow-hidden">
       <div
         className={`w-full h-full transition-all duration-300 ease-in-out
         ${showEditor ? 'grid grid-cols-5 gap-4 p-4' : 'block'}`}
       >
-        {/* Video section - takes 3/5 when grid is active */}
-        <div
+        {/* Video section */}
+        <section
           className={`relative h-full ${showEditor ? 'col-span-3' : 'w-full'}`}
         >
           <VideoPlayer videoId={id ?? ''} />
 
-          {/* Take notes button - only shown when editor is hidden */}
+          {/* Take notes button */}
           <button
             onClick={() => setShowEditor(true)}
             className={`absolute top-4 right-4 z-50 px-4 py-2 bg-blue-600 text-white rounded-lg 
@@ -35,9 +34,9 @@ export default function Page() {
           >
             Take Notes
           </button>
-        </div>
+        </section>
 
-        {/* Notes section - takes 2/5 when shown */}
+        {/* Notes section */}
         {showEditor && (
           <div className="col-span-2 bg-white rounded-lg shadow-lg h-full flex flex-col">
             {/* Notes header */}
@@ -52,14 +51,14 @@ export default function Page() {
             </div>
 
             {/* Notes content */}
-            <div className="flex-1 p-4 overflow-y-auto">
-              <Suspense fallback={null}>
+            <section className="flex-1 p-4 overflow-y-auto">
+              <Suspense fallback="...">
                 <MdxEditor />
               </Suspense>
-            </div>
+            </section>
           </div>
         )}
       </div>
-    </div>
+    </main>
   );
 }

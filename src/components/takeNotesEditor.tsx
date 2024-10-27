@@ -10,7 +10,7 @@ import '@mdxeditor/editor/style.css';
 
 function MdxEditor() {
   return (
-    <section className="flex w-full h-full border-2 border-orange-400">
+    <div className="flex w-full h-full border-2 border-orange-400">
       <MDXEditor
         markdown="Start taking notes"
         plugins={[
@@ -21,7 +21,7 @@ function MdxEditor() {
           codeBlockPlugin(),
         ]}
       />
-    </section>
+    </div>
   );
 }
 
