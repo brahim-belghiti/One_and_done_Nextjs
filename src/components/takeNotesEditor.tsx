@@ -12,7 +12,7 @@ function MdxEditor() {
   return (
     <section className="flex w-full h-full border-2 border-orange-400">
       <MDXEditor
-        markdown="Hello world"
+        markdown="Start taking notes"
         plugins={[
           headingsPlugin({
             allowedHeadingLevels: [1, 2, 3, 4, 5, 6],

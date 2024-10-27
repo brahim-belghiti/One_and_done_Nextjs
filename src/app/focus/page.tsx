@@ -4,17 +4,15 @@ import { Suspense, useState } from 'react';
 import { X } from 'lucide-react';
 import VideoPlayer from '@/components/videoPlayer';
 import dynamic from 'next/dynamic';
+import { useSearchParams } from 'next/navigation'
 const MdxEditor = dynamic(() => import('../../components/takeNotesEditor'), {
   ssr: false,
 });
 
-export default function Page({
-  searchParams: { id },
-}: {
-  searchParams: { id?: string };
-}) {
+export default function Page() {
   const [showEditor, setShowEditor] = useState(false);
-
+  const searchParams = useSearchParams()
+   const id = searchParams.get('id')
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* Grid container */}
