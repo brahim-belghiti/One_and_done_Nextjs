@@ -3,13 +3,11 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 import VideoPlayer from '@/components/videoPlayer';
-import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
 import VideoSkeleton from '@/components/videoSkeleton';
+import MdxEditor from '@/components/takeNotesEditor';
 
-const MdxEditor = dynamic(() => import('../../components/takeNotesEditor'), {
-  ssr: false,
-});
+
 
 
 
