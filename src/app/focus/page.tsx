@@ -1,12 +1,18 @@
-'use client'
+'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { X } from 'lucide-react';
-import VideoPlayer from '@/components/videoPlayer';
+import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
 import VideoSkeleton from '@/components/videoSkeleton';
-import MdxEditor from '@/components/takeNotesEditor';
 
+const MdxEditor = dynamic(() => import('../../components/takeNotesEditor'), {
+  ssr: false,
+});
+
+const VideoPlayer = dynamic(() => import('../../components/videoPlayer'), {
+  ssr: false,
+});
 
 export default function Page() {
   const [showEditor, setShowEditor] = useState(false);
@@ -38,7 +44,9 @@ export default function Page() {
           <div
             className={`w-full h-full ${isLoading ? 'invisible' : 'visible'}`}
           >
-            <VideoPlayer videoId={id ?? ''} onReady={handleVideoReady} />
+            <Suspense>
+              <VideoPlayer videoId={id ?? ''} onReady={handleVideoReady} />
+            </Suspense>
           </div>
 
           {/* Take notes button */}
@@ -67,7 +75,7 @@ export default function Page() {
             </div>
             {/* Notes content */}
             <section className="flex-1 p-4 overflow-y-auto">
-                <MdxEditor />
+              <MdxEditor />
             </section>
           </div>
         )}
