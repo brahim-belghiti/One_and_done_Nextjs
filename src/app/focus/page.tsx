@@ -8,9 +8,6 @@ import VideoSkeleton from '@/components/videoSkeleton';
 import MdxEditor from '@/components/takeNotesEditor';
 
 
-
-
-
 export default function Page() {
   const [showEditor, setShowEditor] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
