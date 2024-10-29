@@ -9,9 +9,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 interface VideoPlayerProps {
   videoId: string;
+  onReady: () => void;
 }
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoId }) => {
+const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoId, onReady }) => {
   const [isCompleted, setIsCompleted] = useState(false);
   const [hasError, setHasError] = useState(false);
   const router = useRouter();
@@ -23,6 +24,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoId }) => {
       autoplay: 1,
     },
   };
+
 
   const handleVideoError = () => {
     toast.error('Please provide a valid video link.');
@@ -55,9 +57,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoId }) => {
           <YouTube
             videoId={videoId}
             opts={videoOptions}
-            className="youtubeContainer"
+            className="w-screen h-fit lg:h-full lg:w-full flex justify-center items-center"
             onEnd={handleVideoEnd}
             onError={handleVideoError}
+            onReady={onReady}
           />
         </div>
       )}

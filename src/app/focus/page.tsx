@@ -1,18 +1,27 @@
 'use client';
-
 import { Suspense, useState } from 'react';
 import { X } from 'lucide-react';
 import VideoPlayer from '@/components/videoPlayer';
 import dynamic from 'next/dynamic';
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation';
+import VideoSkeleton from '@/components/videoSkeleton';
+
 const MdxEditor = dynamic(() => import('../../components/takeNotesEditor'), {
   ssr: false,
 });
 
+
+
 export default function Page() {
   const [showEditor, setShowEditor] = useState(false);
-  const searchParams = useSearchParams()
-   const id = searchParams.get('id')
+  const [isLoading, setIsLoading] = useState(true);
+  const searchParams = useSearchParams();
+  const id = searchParams.get('id');
+
+  const handleVideoReady = () => {
+    setIsLoading(false);
+  };
+
   return (
     <main className="relative w-full h-screen overflow-hidden">
       <div
@@ -23,7 +32,18 @@ export default function Page() {
         <section
           className={`relative h-full ${showEditor ? 'col-span-3' : 'w-full'}`}
         >
-          <VideoPlayer videoId={id ?? ''} />
+          {/* Loading skeleton */}
+          {isLoading && (
+            <div className="absolute inset-0 z-40">
+              <VideoSkeleton />
+            </div>
+          )}
+
+          <div
+            className={`w-full h-full ${isLoading ? 'invisible' : 'visible'}`}
+          >
+            <VideoPlayer videoId={id ?? ''} onReady={handleVideoReady} />
+          </div>
 
           {/* Take notes button */}
           <button
@@ -49,7 +69,6 @@ export default function Page() {
                 <X className="w-5 h-5" />
               </button>
             </div>
-
             {/* Notes content */}
             <section className="flex-1 p-4 overflow-y-auto">
               <Suspense fallback="...">
