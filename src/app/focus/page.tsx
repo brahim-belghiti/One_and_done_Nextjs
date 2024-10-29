@@ -1,5 +1,6 @@
-'use client';
-import { Suspense, useState } from 'react';
+'use client'
+
+import { useState } from 'react';
 import { X } from 'lucide-react';
 import VideoPlayer from '@/components/videoPlayer';
 import dynamic from 'next/dynamic';
@@ -71,9 +72,7 @@ export default function Page() {
             </div>
             {/* Notes content */}
             <section className="flex-1 p-4 overflow-y-auto">
-              <Suspense fallback="...">
                 <MdxEditor />
-              </Suspense>
             </section>
           </div>
         )}
