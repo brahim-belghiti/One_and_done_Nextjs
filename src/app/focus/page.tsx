@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { Suspense, useState } from 'react';
+import { useState } from 'react';
 import { X } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { useSearchParams } from 'next/navigation';
@@ -44,9 +44,7 @@ export default function Page() {
           <div
             className={`w-full h-full ${isLoading ? 'invisible' : 'visible'}`}
           >
-            <Suspense>
               <VideoPlayer videoId={id ?? ''} onReady={handleVideoReady} />
-            </Suspense>
           </div>
 
           {/* Take notes button */}

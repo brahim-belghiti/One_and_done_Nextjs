@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -70,3 +70,5 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoId, onReady }) => {
 };
 
 export default VideoPlayer;
+
+
